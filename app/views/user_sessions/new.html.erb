@@ -1,0 +1,23 @@
+<h1>ログイン画面</h1>
+<ul>
+  <% @user_session.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+
+<%= form_for @user_session, url: user_session_path do |f| %>
+  <h2 id="toc-sign-in">Sign in</h2>
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p>
+  
+  <%= f.submit "Sign in" %>
+<% end %>
+<%= link_to "Sign up", sign_up_path, method: 'get' %>
+  

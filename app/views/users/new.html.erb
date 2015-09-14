@@ -1,0 +1,26 @@
+<ul>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %>></li>
+  <% end %>
+</ul>
+
+<%= form_for @user, url: users_path do |f| %>
+  <h2 id="toc_sign-up">ユーザ登録</h2>
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <%= f.label :passowd_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <%= f.submit "sign up" %>
+<% end %>
+

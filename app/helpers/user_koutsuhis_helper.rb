@@ -1,0 +1,2 @@
+module UserKoutsuhisHelper
+end

@@ -1,0 +1,49 @@
+<div class="page-header">
+    <h1>一覧</h1>
+</div>
+<%= form_for(@sum_koutsuhi, url: koutsuhis_path, html: {method: :post}, class: 'form-horizontal', role: 'form') do |f| %>
+  <%= f.label :seisan_month %>
+  <%= f.collection_select :user_id, @koutsuhis, :seisan_month, :seisan_month, :include_blank => true %>
+<% end %>
+<div class="month_item">
+    <% @sum_koutsuhis.each do |sum_koutsuhi| %>
+        <%= sum_koutsuhi.seisan_month %>
+    <% end %>
+</div>
+
+<div class="list-group">
+                <table class="bordered">
+                <thead>
+                <tr>
+                    <th>日付</th>
+                    <th>ルート</th>
+                    <th>金額</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                    <% @koutsuhis.each do |koutsuhi| %>
+<%#= debug(koutsuhi) %>
+<%#= koutsuhi.user_id %>
+                <tr>
+                        <td><%= koutsuhi.seisan_date %></td>
+                        <td><%= koutsuhi.route_from %>〜<%= koutsuhi.route_to %></td>
+                        <td><%= koutsuhi.price %></td>
+                        <td>
+                            <%= link_to 'Show', koutsuhi %>
+                            <%= link_to 'Edit', edit_koutsuhi_path(koutsuhi) %>
+                            <%= link_to 'Destroy', koutsuhi,  method: :delete, data: { confirm: 'OK?' } %>
+                        </td>
+                    <% end %>
+                </tr>
+                </table>
+                
+               
+        </h4>
+    </div>
+    <div class="sum-price">
+        <% @sum_koutsuhis.each do |sum_koutsuhi| %>
+            合計：<%= sum_koutsuhi.sum_price %>円
+        <% end %>
+    </div>
+    <%= link_to '新規登録', new_koutsuhi_path %>
+

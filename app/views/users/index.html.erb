@@ -1,0 +1,5 @@
+<div>ユーザ一覧</div>
+<% @users.each do |user| %>
+  <%= user.id %>
+  <%= link_to 'Show', user_koutsuhis_user_path(user.id)  %>
+<% end %>
